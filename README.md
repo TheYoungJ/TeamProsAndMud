@@ -2,6 +2,8 @@
 
 ## One for All
 
+![alt text](https://github.com/TheYoungJ/TeamProsAndMud/blob/master/images/logo/one_for_all.jpg?raw=true)
+
 ### Members
 - Mud Mirza 101081388
 - Jacob Young 101063578
