@@ -16,10 +16,15 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+
 public class MainActivity extends AppCompatActivity {
     ArrayAdapter adapter;
-    ListView listView;
-    TextView emptyView;
+    String def_term = "";
+    String def_country = "ca";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,10 +33,19 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        listView = findViewById(R.id.listView);
-        emptyView = findViewById(R.id.emptyView);
+        ListView listView = findViewById(R.id.listView);
+        TextView emptyView = findViewById(R.id.emptyView);
+        api_Utelly tel = new api_Utelly();
+        try {
+            JSONObject data = tel.getRequest(def_term, def_country);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
         adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,
                 getResources().getStringArray(R.array.months_array));
+
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -39,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, adapterView.getItemAtPosition(i).toString(), Toast.LENGTH_SHORT).show();
             }
         });
+
         listView.setEmptyView(emptyView);
     }
 
