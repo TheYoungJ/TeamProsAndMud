@@ -1,5 +1,7 @@
 package com.example.demosearch;
 
+import android.os.AsyncTask;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -9,7 +11,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class api_Utelly{
+public class api_Utelly {
 
     OkHttpClient client = new OkHttpClient();
 
@@ -27,15 +29,15 @@ public class api_Utelly{
         String jdata = response.body().toString();
         return new JSONObject(jdata);
     }
-
-    /*public static void main(String[] args){
+    /*
+    public static void main(String[] args){
         String term = "The Office";
         String country = "ca";
         api_Utelly api_response = new api_Utelly();
         try{
-            Response get_r = api_response.getRequest(term, country);
-            System.out.println(get_r.toString());
+            JSONObject get_r = api_response.getRequest(term, country);
+            System.out.println(get_r);
         }
-        catch(IOException e){ System.out.println("ERROR: " + e.toString());}
+        catch(IOException | JSONException e){ System.out.println("ERROR: " + e.toString());}
     }*/
 }

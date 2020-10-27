@@ -17,7 +17,7 @@
             android:background="?attr/colorPrimary"
             android:minHeight="?attr/actionBarSize"
             app:actionViewClass="androidx.appcompat.widget.SearchView"
-            app:theme="@style/ThemeOverlay.AppCompat.Dark" />
+            android:theme="@style/ThemeOverlay.AppCompat.Dark" />
 
         <ListView
             android:id="@+id/listView"
@@ -31,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="No Results"
+            android:text="@string/no_results"
             android:textSize="20sp"
             android:visibility="gone"/>
     </RelativeLayout>

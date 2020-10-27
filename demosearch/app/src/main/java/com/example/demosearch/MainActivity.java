@@ -21,9 +21,13 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+
 public class MainActivity extends AppCompatActivity {
     ArrayAdapter adapter;
-    String def_term = "";
+    String def_term = "bojack";
     String def_country = "ca";
 
     @Override
@@ -35,15 +39,16 @@ public class MainActivity extends AppCompatActivity {
 
         ListView listView = findViewById(R.id.listView);
         TextView emptyView = findViewById(R.id.emptyView);
-        /*api_Utelly tel = new api_Utelly();
+        //api_Utelly tel = new api_Utelly();
         try {
-            JSONObject data = tel.getRequest(def_term, def_country);
+            JSONObject data = getRequest(def_term, def_country);
+            System.out.println(data);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (JSONException e) {
             e.printStackTrace();
-        }*/
-        //found an json adapter, gonna replace this one with that 
+        }
+        //found an json adapter, gonna replace this one with that
         adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,
                 getResources().getStringArray(R.array.months_array));
 
@@ -76,5 +81,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         return super.onCreateOptionsMenu(menu);
+    }
+
+    public JSONObject getRequest(String term, String country) throws IOException, JSONException {
+        OkHttpClient client = new OkHttpClient();
+        String url = "https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup?term="+term+"&country="+country;
+
+        Request request = new Request.Builder()
+                .url(url)
+                .get()
+                .addHeader("x-rapidapi-host", "utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com")
+                .addHeader("x-rapidapi-key", "dd37d15cf1msha20c25bf6ba08c7p1c3821jsn93385a10f1f6")
+                .build();
+
+        Response response = client.newCall(request).execute();
+        String jdata = response.body().toString();
+        return new JSONObject(jdata);
     }
 }
