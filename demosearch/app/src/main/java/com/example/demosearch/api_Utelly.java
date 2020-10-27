@@ -7,11 +7,12 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
+import okhttp3.Call;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class api_Utelly {
+public class api_Utelly  {
 
     OkHttpClient client = new OkHttpClient();
 
@@ -25,9 +26,11 @@ public class api_Utelly {
                 .addHeader("x-rapidapi-key", "dd37d15cf1msha20c25bf6ba08c7p1c3821jsn93385a10f1f6")
                 .build();
 
-        Response response = client.newCall(request).execute();
-        String jdata = response.body().toString();
-        return new JSONObject(jdata);
+        Call call = client.newCall(request);
+        Response response = call.execute();
+        //Response response = client.newCall(request).execute();
+        String jData = response.body().toString();
+        return new JSONObject(jData);
     }
     /*
     public static void main(String[] args){
