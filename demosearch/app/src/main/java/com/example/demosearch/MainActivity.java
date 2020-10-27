@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,11 +23,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.net.URL;
+import java.lang.reflect.Array;
+import java.util.List;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.Response;
 import okhttp3.ResponseBody;
 
 public class MainActivity extends AppCompatActivity {
@@ -38,7 +39,9 @@ public class MainActivity extends AppCompatActivity {
     //api_Utelly api = new api_Utelly();
     String url;
     ListView listView;
+    GridView gridView;
     TextView emptyView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +49,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        listView = findViewById(R.id.listView);
+        gridView = findViewById(R.id.gridview);
+        //listView = findViewById(R.id.listView);
         emptyView = findViewById(R.id.emptyView);
 
         //api_Utelly tel = new api_Utelly();
@@ -58,15 +61,13 @@ public class MainActivity extends AppCompatActivity {
         adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,
                 getResources().getStringArray(R.array.months_array));
 
-        listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        gridView.setAdapter(new ImageAdapter(this));
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Toast.makeText(MainActivity.this, adapterView.getItemAtPosition(i).toString(), Toast.LENGTH_SHORT).show();
             }
         });
-
-        listView.setEmptyView(emptyView);
     }
 
     @Override
@@ -123,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Void aVoid){
-            //adapt json for listview
+            //adapt json for gridview
             try {
                 System.out.println(res.string());
                 //JSONObject s = res.string();
@@ -131,12 +132,69 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-            //populate listview
+            //populate gridview
+
             super.onPostExecute(aVoid);
         }
     }
 
-    private class reponseObject{
+   public class responseObject{
+
+        private item[] result;
+        private item it;
+        private String updated;
+        private String term;
+        private Integer status_code;
+        private String variant;
+
+        public responseObject(item[] res, item itt, String update, String ter, Integer sc, String var){
+            this.result = res;
+            this.it = itt;
+            this.updated = update;
+            this.term = ter;
+            this.status_code = sc;
+            this.variant = var;
+        }
+
+        public class item{
+            private String id;
+            private String pic;
+            private String name;
+            private locations[] location;
+            private String provider;
+            private Integer weight;
+
+            public item(String id, String pic, String name, locations[] location, String provider, Integer weight){
+                this.id = id;
+                this.pic = pic;
+                this.name = name;
+                this.location = location;
+                this.provider = provider;
+                this.weight = weight;
+            }
+
+            public class locations{
+                private String icon;
+                private String display_name;
+                private String name;
+                private String id;
+                private String uri;
+
+                public locations(String icon, String display_name, String name, String id, String uri){
+                    this.icon = icon;
+                    this.display_name = display_name;
+                    this.name = name;
+                    this.id = id;
+                    this.uri = uri;
+
+                }
+
+
+            }
+        }
+
+
+
         {"results":
             [{
                 "id": "5d97da029a76a40056de1c59",
