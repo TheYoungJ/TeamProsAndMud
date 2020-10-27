@@ -31,9 +31,9 @@ import okhttp3.ResponseBody;
 
 public class MainActivity extends AppCompatActivity {
     ArrayAdapter adapter;
-    String def_term = "bojack";
+    String def_term = "";
     String nTerm;
-    String def_country = "uk";
+    String def_country = "ca";
     String nCountry = "ca";
     //api_Utelly api = new api_Utelly();
     String url;
@@ -126,6 +126,7 @@ public class MainActivity extends AppCompatActivity {
             //adapt json for listview
             try {
                 System.out.println(res.string());
+                //JSONObject s = res.string();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -133,5 +134,71 @@ public class MainActivity extends AppCompatActivity {
             //populate listview
             super.onPostExecute(aVoid);
         }
+    }
+
+    private class reponseObject{
+        {"results":
+            [{
+                "id": "5d97da029a76a40056de1c59",
+                "picture": "https://utellyassets9-1.imgix.net/api/Images/2b54cb3bdb54d7bb696801e52a789247/Redirect",
+                "name": "Nella the Princess Knight",
+                "locations":
+                    [{
+                        "icon": "https://utellyassets7.imgix.net/locations_icons/utelly/black_new/GooglePlayIVACA.png?w=92&auto=compress&app_version=8bc263d1-dd7b-40c0-98cd-f677eb14d81e_e12122020-10-27",
+                        "display_name": "Google Play",
+                        "name": "GooglePlayIVACA",
+                        "id": "5d84d6ddd95dc7385f6a43eb",
+                        "url": "https://play.google.com/store/tv/show?amp=&amp=&cdid=tvseason-L2LpMv5jWB9shr1ABBPEGg&gdid=tvepisode-UFsxdW-kaMw&gl=CA&hl=en&id=RmS_3uRtDJmG6knRcnyCOQ"}],
+                "provider": "iva",
+                "weight": 7733,
+                "external_ids":
+                    {
+                        "iva_rating": null,
+                        "imdb":
+                            {"url": "https://www.imdb.com/title/tt6415656",
+                            "id": "tt6415656"},
+                        "tmdb":
+                            {"url": "https://www.themoviedb.org/tv/70104",
+                                    "id": "70104"},
+                            "wiki_data":
+                                {"url": "https://www.wikidata.org/wiki/Q28312035",
+                                        "id": "Q28312035"},
+                            "iva": {"id": "404751"},
+                            "gracenote": null,
+                            "rotten_tomatoes": null,
+                            "facebook": null}},
+            {
+                "id": "5ed7b803ba30cfc1910f143d",
+                "picture": "https://utellyassets9-1.imgix.net/api/Images/1c580fc0c52f42c2e50fe57ce8199177/Redirect",
+                "name": "Lego Jurassic World: Legend of Isla Nublar",
+                "locations":
+                    [{
+                        "icon": "https://utellyassets7.imgix.net/locations_icons/utelly/black_new/iTunesIVACA.png?w=92&auto=compress&app_version=8bc263d1-dd7b-40c0-98cd-f677eb14d81e_e12122020-10-27",
+                        "display_name": "iTunes",
+                        "name": "iTunesIVACA",
+                        "id": "5d8415b32393e90053ac366c",
+                        "url": "https://itunes.apple.com/ca/tv-season/under-the-volcano/id1500308383?i=1502262476"},
+                    {
+                        "icon": "https://utellyassets7.imgix.net/locations_icons/utelly/black_new/GooglePlayIVACA.png?w=92&auto=compress&app_version=8bc263d1-dd7b-40c0-98cd-f677eb14d81e_e12122020-10-27",
+                            "display_name": "Google Play",
+                            "name": "GooglePlayIVACA",
+                            "id": "5d84d6ddd95dc7385f6a43eb",
+                            "url": "https://play.google.com/store/tv/show?amp=&amp=&cdid=tvseason-JdO_Dum-Z9Am21K4gn9eaw&gdid=tvepisode-XRkYW_8asYU&gl=CA&hl=en&id=pjUC4n_Gb94361bxBgOwhw"}],
+                "provider": "iva",
+                "weight": 0,
+                "external_ids":
+                    {
+                        "iva_rating": null,
+                        "imdb":
+                            {
+                                "url": "https://www.imdb.com/title/tt10872880",
+                                "id": "tt10872880"},
+                        "tmdb": {"url": "https://www.themoviedb.org/tv/93895", "id": "93895"},
+                        "wiki_data": {"url": "https://www.wikidata.org/wiki/Q76574623", "id": "Q76574623"},
+                        "iva": {"id": "676719"}, "gracenote": null, "rotten_tomatoes": null, "facebook": null}}],
+            "updated": "2020-10-27T05:19:14+0000",
+            "term": "null",
+            "status_code": 200,
+            "variant": "ivafull"}
     }
 }
