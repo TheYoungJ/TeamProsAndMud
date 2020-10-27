@@ -25,8 +25,7 @@ public class api_Utelly{
 
         Response response = client.newCall(request).execute();
         String jdata = response.body().toString();
-        JSONObject jobj = new JSONObject(jdata);
-        return jobj;
+        return new JSONObject(jdata);
     }
 
     /*public static void main(String[] args){

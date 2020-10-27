@@ -35,14 +35,15 @@ public class MainActivity extends AppCompatActivity {
 
         ListView listView = findViewById(R.id.listView);
         TextView emptyView = findViewById(R.id.emptyView);
-        api_Utelly tel = new api_Utelly();
+        /*api_Utelly tel = new api_Utelly();
         try {
             JSONObject data = tel.getRequest(def_term, def_country);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (JSONException e) {
             e.printStackTrace();
-        }
+        }*/
+        //found an json adapter, gonna replace this one with that 
         adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,
                 getResources().getStringArray(R.array.months_array));
 
