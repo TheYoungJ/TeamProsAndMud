@@ -4,28 +4,61 @@ import android.app.Activity;
 import android.os.AsyncTask;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.lang.reflect.Modifier;
 
 import okhttp3.Call;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class api_Utelly  extends Activity {
-    private final String def_term = "bad";
-    private final String def_country = "ca";
-    private String nTerm = "bad";
-    private String nCountry = "ca";
-    private String url;
-    Gson gson;
-    responseObject obj;
+public class api_Utelly extends Activity {
+
+    private responseObject ob;
+
+    public void invokeGet(String term, String country){
+        if(term != null && country != null){
+            new api_utelly_getrequest(term, country).execute();
+        }else{
+            new api_utelly_getrequest().execute();
+        }
+    }
+
+    public void getResponse(responseObject o){
+        ob = o;
+        System.out.println("OBJECT Get --> "+ob);
+    }
+
+    public responseObject sendResponse(){
+        System.out.println("OBJECT Send --> "+ob);
+        return ob;
+    }
 
     private class api_utelly_getrequest extends AsyncTask<Void, Void, Void> {
-        String res;
+        private String res;
+        private Gson gson;
+        private GsonBuilder gbuilder;
+        private responseObject obj;
+        private final String def_term = "bad";
+        private final String def_country = "ca";
+        private String nTerm;
+        private String nCountry;
+        private String url;
+
+        public api_utelly_getrequest(String term, String country){
+            this.nTerm =term;
+            this.nCountry = country;
+        }
+
+        public api_utelly_getrequest(){
+            this.nCountry = "ca";
+            this.nTerm = "bad";
+        }
 
         @Override
         protected Void doInBackground(Void... voids) {
@@ -45,8 +78,7 @@ public class api_Utelly  extends Activity {
 
             try {
                 res = client.newCall(request).execute().body().string();
-                obj = gson.fromJson(res, responseObject.class);
-                System.out.println("OBJ INSIDE ---> "+obj);
+                System.out.println("RESULT ---> "+res);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -57,8 +89,10 @@ public class api_Utelly  extends Activity {
         protected void onPostExecute(Void aVoid){
             //adapt json for gridview
             //create obj for the results using the responseobject class
-
+            gbuilder = new GsonBuilder();
+            gson = gbuilder.excludeFieldsWithModifiers(Modifier.STATIC).create();
             obj = gson.fromJson(res, responseObject.class);
+            getResponse(obj);
             System.out.println("OBJ ON POST ---> "+obj);
             //testing for each part of the response, important parts
             for(responseObject.item item : obj.getResult()){
@@ -70,18 +104,8 @@ public class api_Utelly  extends Activity {
 
             super.onPostExecute(aVoid);
         }
-
-
     }
 
-    public responseObject invokeGet(String term, String country){
-        if(term != null && country != null){
-            nTerm = term;
-            nCountry = country;
-        }
-        new api_utelly_getrequest().execute();
-        return obj;
-    }
 
     /*OkHttpClient client = new OkHttpClient();
 

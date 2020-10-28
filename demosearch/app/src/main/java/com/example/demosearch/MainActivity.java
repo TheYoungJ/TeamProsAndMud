@@ -30,16 +30,12 @@ import okhttp3.Request;
 public class MainActivity extends AppCompatActivity {
     ImageAdapter adapter;
     String def_term = "bad";
-    String nTerm = "bad";
+    String nTerm = def_term;
     String def_country = "ca";
     String nCountry = "ca";
-    //api_Utelly api = new api_Utelly();
-    String url;
     GridView gridView;
     responseObject obj;
-    private Gson gson;
-    private GsonBuilder gbuilder;
-    api_Utelly tel = new api_Utelly();
+    //api_Utelly tel = new api_Utelly();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,19 +46,24 @@ public class MainActivity extends AppCompatActivity {
         gridView = findViewById(R.id.gridView);
         //emptyView = findViewById(R.id.emptyView);
 
-        gbuilder = new GsonBuilder();
-        gson = gbuilder.excludeFieldsWithModifiers(Modifier.STATIC).create();
-
         //call the invoke process to  get the response from the api
-        obj = tel.invokeGet(def_term, def_country);
+        //tel.invokeGet(def_term, def_country);
+        //obj = tel.sendResponse();
+        //while(obj == null){
+        //    obj = tel.sendResponse();
+        //}
+
+        new api_utelly_getrequest().execute();
 
         //get names from obj
         ArrayList<String> names = new ArrayList<String>();
         ArrayList<String> pics = new ArrayList<String>();
         System.out.println("OBJ RESULTS ----> "+obj);
-        for(responseObject.item item : obj.getResult()){
-            names.add(item.getName());
-            pics.add(item.getPic());
+        while(obj != null) {
+            for (responseObject.item item : obj.getResult()) {
+                names.add(item.getName());
+                pics.add(item.getPic());
+            }
         }
 
         adapter = new ImageAdapter(this, names, pics);
@@ -78,14 +79,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        /*
-         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(MainActivity.this, adapterView.getItemAtPosition(i).toString(), Toast.LENGTH_SHORT).show();
-            }
-        });
-         */
     }
 
     @Override
@@ -98,13 +91,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 nTerm = query;
-                obj = tel.invokeGet(query, def_country);
+                new api_utelly_getrequest().execute();
+                //obj = tel.sendResponse();
                 return false;
             }
             @Override
             public boolean onQueryTextChange(String newText) {
                 nTerm = newText;
-                obj = tel.invokeGet(newText, def_country);
+                new api_utelly_getrequest().execute();
+                //tel.invokeGet(newText, def_country);
                 //adapter.getFilter().filter(newText);
                 return true;
             }
@@ -112,5 +107,60 @@ public class MainActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
+    private class api_utelly_getrequest extends AsyncTask<Void, Void, Void> {
+        private String res;
+        private Gson gson;
+        private GsonBuilder gbuilder;
+        //private responseObject obj;
+        //private final String def_term = "bad";
+        //private final String def_country = "ca";
+        //private String nTerm;
+        //private String nCountry;
+        private String url;
 
+        @Override
+        protected Void doInBackground(Void... voids) {
+            OkHttpClient client = new OkHttpClient();
+            if (nTerm != null || nTerm.length() != 0 || nCountry != null || nCountry.length() != 0) {
+                url = "https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup?term=" + nTerm + "&country=" + nCountry;
+            } else {
+                url = "https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup?term=" + def_term + "&country=" + def_country;
+            }
+
+            Request request = new Request.Builder()
+                    .url(url)
+                    .get()
+                    .addHeader("x-rapidapi-host", "utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com")
+                    .addHeader("x-rapidapi-key", "dd37d15cf1msha20c25bf6ba08c7p1c3821jsn93385a10f1f6")
+                    .build();
+
+            try {
+                res = client.newCall(request).execute().body().string();
+                System.out.println("RESULT ---> " + res);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            //adapt json for gridview
+            //create obj for the results using the responseobject class
+            gbuilder = new GsonBuilder();
+            gson = gbuilder.excludeFieldsWithModifiers(Modifier.STATIC).create();
+            obj = gson.fromJson(res, responseObject.class);
+            //getResponse(obj);
+            System.out.println("OBJ ON POST ---> " + obj);
+            //testing for each part of the response, important parts
+            for (responseObject.item item : obj.getResult()) {
+                System.out.println("Item -> " + item.getName());
+                for (responseObject.item.locations loc : item.getLocation()) {
+                    System.out.println("service -> " + loc.getName());
+                }
+            }
+
+            super.onPostExecute(aVoid);
+        }
+    }
 }
