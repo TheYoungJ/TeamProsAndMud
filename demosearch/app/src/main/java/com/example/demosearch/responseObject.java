@@ -66,7 +66,7 @@ public class responseObject{
 
     public static class item{
         private String id;
-        private String pic;
+        private String picture;
         private String name;
         private List<locations> locations;
         private String provider;
@@ -74,7 +74,7 @@ public class responseObject{
 
         public item(String id, String pic, String name, List<locations> location, String provider, Integer weight){
             this.id = id;
-            this.pic = pic;
+            this.picture = pic;
             this.name = name;
             this.locations = location;
             this.provider = provider;
@@ -83,7 +83,13 @@ public class responseObject{
     //useless rn
         public String toString(){
             String res;
-            res = "name:"+this.name;
+            res = "name:"+this.name+"\n";
+            res += "picture: "+this.picture+"\n";
+            res += "locations: ";
+            for(locations l : locations){
+                res += l+"\n";
+            }
+
             return res;
         }
 
@@ -96,11 +102,11 @@ public class responseObject{
         }
 
         public String getPic(){
-            return this.pic;
+            return this.picture;
         }
 
         public void setPic(String p){
-            this.pic = p;
+            this.picture = p;
         }
 
         public String getName(){

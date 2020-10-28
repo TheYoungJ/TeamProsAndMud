@@ -2,7 +2,7 @@ package com.example.demosearch;
 
 import android.content.Context;
 
-import android.net.Uri;
+import android.graphics.Bitmap;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -11,17 +11,37 @@ import android.widget.ImageView;
 import android.view.LayoutInflater;
 import android.widget.TextView;
 
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.nostra13.universalimageloader.core.assist.ImageSize;
+import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
+
 import java.util.ArrayList;
 
 public class ImageAdapter extends BaseAdapter {
     private Context context;
     private ArrayList<String> names;
     private ArrayList<String> pics;
+    //private final DisplayImageOptions options;
+    private ImageLoader imageLoader = ImageLoader.getInstance();
+
 
     public ImageAdapter(Context context, ArrayList<String> names, ArrayList<String> pics) {
         this.context = context;
         this.names = names;
         this.pics = pics;
+        /*this.options = new DisplayImageOptions.Builder()
+                .showImageOnLoading(R.mipmap.oneforall)
+                .showImageForEmptyUri(R.mipmap.oneforall)
+                .showImageOnFail(R.mipmap.oneforall)
+                .cacheInMemory(true)
+                .cacheOnDisk(true)
+                .considerExifParams(true)
+                .bitmapConfig(Bitmap.Config.RGB_565)
+                .build();*/
+
+        ImageLoader.getInstance().init(ImageLoaderConfiguration.createDefault(context));
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -50,7 +70,27 @@ public class ImageAdapter extends BaseAdapter {
             String mobile = names.get(position);
 
             //get images from urls in pics
-            imageView.setImageURI(Uri.parse(pics.get(position)));
+            if(pics.get(position) != null) {
+                String url = pics.get(position);
+                final Bitmap[] ma = new Bitmap[1];
+                imageLoader.loadImage(url, new SimpleImageLoadingListener(){
+                    @Override
+                    public void onLoadingComplete(String imageUri, View view,
+                                                  Bitmap loadedImage) {
+                        super.onLoadingComplete(imageUri, view, loadedImage);
+                        ma[0] = loadedImage;
+                        //write your code here to use loadedImage
+                    }
+                });
+
+                //ImageSize targetSize = new ImageSize(200, 200); // result Bitmap will be fit to this size
+                //Bitmap bmp = imageLoader.loadImageSync(pics.get(position), targetSize, options);
+                //Bitmap bmp = imageLoader.loadImageSync(pics.get(position));
+
+                imageView.setImageBitmap(ma[0]);
+            }else{
+                imageView.setImageResource(R.mipmap.oneforall);
+            }
 
             //change how image searches are done, maybe send pairs
             /*if (mobile.equals("Windows")) {
