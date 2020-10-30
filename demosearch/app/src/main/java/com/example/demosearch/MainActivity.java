@@ -149,6 +149,7 @@ public class MainActivity extends AppCompatActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
+                                System.out.println("ERROR IN run on UI thread");
                                 // For the example, you can show an error dialog or a toast
                                 // on the main UI thread
                             }
@@ -165,10 +166,6 @@ public class MainActivity extends AppCompatActivity {
                             pics.add(item.getPic());
                             //System.out.println(item.toString());
                         }
-
-                        //System.out.print("Names --> "+names);
-                        System.out.println("Pics -->" +pics);
-                        // Do something with the response
                     }
                 });
     }
