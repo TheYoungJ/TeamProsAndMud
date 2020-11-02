@@ -92,17 +92,6 @@ public class ImageAdapter extends BaseAdapter {
                 imageView.setImageResource(R.mipmap.oneforall);
             }
 
-            //change how image searches are done, maybe send pairs
-            /*if (mobile.equals("Windows")) {
-                imageView.setImageResource(R.drawable.windows_logo);
-            } else if (mobile.equals("iOS")) {
-                imageView.setImageResource(R.drawable.ios_logo);
-            } else if (mobile.equals("Blackberry")) {
-                imageView.setImageResource(R.drawable.blackberry_logo);
-            } else {
-                imageView.setImageResource(R.drawable.android_logo);
-            }*/
-
         } else {
             gridView = (View) convertView;
         }

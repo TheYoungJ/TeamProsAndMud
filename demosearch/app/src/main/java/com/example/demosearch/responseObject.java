@@ -146,14 +146,14 @@ public class responseObject{
             private String display_name;
             private String name;
             private String id;
-            private String uri;
+            private String url;
 
-            public locations(String icon, String display_name, String name, String id, String uri){
+            public locations(String icon, String display_name, String name, String id, String url){
                 this.icon = icon;
                 this.display_name = display_name;
                 this.name = name;
                 this.id = id;
-                this.uri = uri;
+                this.url = url;
             }
 
             public String getIcon(){
@@ -188,12 +188,12 @@ public class responseObject{
                 this.id=i;
             }
 
-            public String getUri(){
-                return this.uri;
+            public String getUrl(){
+                return this.url;
             }
 
             public void setUri(String u){
-                this.uri = u;
+                this.url = u;
             }
 
         }
