@@ -141,6 +141,7 @@ public class responseObject{
             this.weight = w;
         }
 
+        //class to house the providers of the movies/shows
         public static class locations{
             private String icon;
             private String display_name;

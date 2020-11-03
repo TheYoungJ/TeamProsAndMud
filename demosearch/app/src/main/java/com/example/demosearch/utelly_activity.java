@@ -9,19 +9,22 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
+
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
 import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.ListAdapter;
-import android.widget.TextView;
 import android.widget.Toast;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
 import java.io.IOException;
-import java.lang.reflect.Array;
+
 import java.lang.reflect.Modifier;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,10 +44,9 @@ public class utelly_activity extends AppCompatActivity {
     responseObject obj;
     private Gson gson;
     private GsonBuilder gbuilder;
-    ArrayList<String> names = new ArrayList<String>();
-    ArrayList<String> pics = new ArrayList<String>();
     ArrayList<ArrayList<String>> urls = new ArrayList<ArrayList<String>>();
     ArrayList<ArrayList<String>> provider_name = new ArrayList<ArrayList<String>>();
+    ArrayList<ArrayList<String>> objAdapter = new ArrayList<ArrayList<String>>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +65,7 @@ public class utelly_activity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        adapter = new ImageAdapter(this, names, pics);
+        adapter = new ImageAdapter(this, objAdapter);
 
         gridView.setAdapter(adapter);
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -109,6 +111,10 @@ public class utelly_activity extends AppCompatActivity {
                 nTerm = query;
                 try {
                     doGetRequest(query, def_country);
+                    adapter.updateView(objAdapter);
+                    /*if(objAdapter != null || objAdapter.size() != 0) {
+                        adapter.getFilter().filter(query);
+                    }*/
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -119,10 +125,13 @@ public class utelly_activity extends AppCompatActivity {
                 //nTerm = newText;
                 try {
                     doGetRequest(newText, def_country);
+                    adapter.updateView(objAdapter);
+                    /*if(objAdapter != null || objAdapter.size() != 0) {
+                        adapter.getFilter().filter(newText);
+                    }*/
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                //adapter.getFilter().filter(newText);
                 return true;
             }
         });
@@ -170,13 +179,20 @@ public class utelly_activity extends AppCompatActivity {
                 System.out.println("RESULT ----> "+res);
                 obj = gson.fromJson(res, responseObject.class);
                 for (responseObject.item item : obj.getResult()) {
-                    names.add(item.getName());
-                    pics.add(item.getPic());
+                    //get names and pics urls for each result item
+                    ArrayList<String> l = new ArrayList<>();
+                    l.add(0, item.getName());
+                    l.add(1, item.getPic());
+                    objAdapter.add(l);
+                    //update image adapter
+                    adapter.updateView(objAdapter);
+
+                    //get urls of providers and their names
                     ArrayList<String> it = new ArrayList<>();
                     ArrayList<String> p = new ArrayList<>();
-                    for(responseObject.item.locations l : item.getLocation()){
-                        it.add(l.getUrl());
-                        p.add(l.getDisplay_name());
+                    for(responseObject.item.locations lo : item.getLocation()){
+                        it.add(lo.getUrl());
+                        p.add(lo.getDisplay_name());
                     }
                     urls.add(it);
                     provider_name.add(p);
