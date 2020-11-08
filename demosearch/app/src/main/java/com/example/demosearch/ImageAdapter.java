@@ -91,7 +91,6 @@ public class ImageAdapter extends BaseAdapter implements Filterable {
                                                   Bitmap loadedImage) {
                         super.onLoadingComplete(imageUri, view, loadedImage);
                         ma[0] = loadedImage;
-                        //write your code here to use loadedImage
                     }
                 });
 
