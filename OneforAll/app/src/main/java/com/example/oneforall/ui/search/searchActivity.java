@@ -35,7 +35,7 @@ import okhttp3.Response;
 
 public class searchActivity extends AppCompatActivity {
     ImageAdapter adapter;
-    String def_term = "bad";
+    String def_term = "";
     String nTerm = def_term;
     String def_country = "ca";
     String nCountry = "ca";
@@ -111,9 +111,9 @@ public class searchActivity extends AppCompatActivity {
                 try {
                     doGetRequest(query, def_country);
                     adapter.updateView(objAdapter);
-                    /*if(objAdapter != null || objAdapter.size() != 0) {
+                    if(objAdapter != null || objAdapter.size() != 0) {
                         adapter.getFilter().filter(query);
-                    }*/
+                    }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -125,9 +125,9 @@ public class searchActivity extends AppCompatActivity {
                 try {
                     doGetRequest(newText, def_country);
                     adapter.updateView(objAdapter);
-                    /*if(objAdapter != null || objAdapter.size() != 0) {
+                    if(objAdapter != null || objAdapter.size() != 0) {
                         adapter.getFilter().filter(newText);
-                    }*/
+                    }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -138,7 +138,7 @@ public class searchActivity extends AppCompatActivity {
     }
 
     void doGetRequest(String term, String country) throws IOException{
-        final String def_term = "bad";
+        final String def_term = "";
         final String def_country = "ca";
         String url;
 
