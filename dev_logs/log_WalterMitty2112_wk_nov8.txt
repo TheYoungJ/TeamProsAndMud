@@ -1,0 +1,8 @@
+all commit addresses for WalterMitty2112 are under the devon branch
+
+Worked on:
+- rough working demo of search
+@ 53c42abf307355f3a8c119c6a3fa882be8bc8a74
+@ 234915c4717e6e1e181b6b2768768d4109146948
+
+Week of Nov. 8, 2020
