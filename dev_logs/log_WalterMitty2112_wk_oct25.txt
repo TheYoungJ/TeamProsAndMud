@@ -1,6 +1,0 @@
-all commit addresses for WalterMitty2112 are under the devon branch
-
-Worked on:
-- integrating uNoGS api in java with okhttp3 and maven @ abaf25f3706a2b86b5f9ee804884fb2df1c88b17
-
-Week of Oct. 25th, 2020
