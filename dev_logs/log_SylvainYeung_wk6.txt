@@ -1,0 +1,11 @@
+Date:           Oct. 30, 2020
+Name:           Sylvain Yeung
+Student number: 100909961
+
+Implemented a multi-activity function within the app.
+This function creates a second "window" with its own UI elements and methods that are attached to it.
+Created an "Intent" which is an object that used to control the flow of the application.
+The Intent object redirects the user to the second window and back to the first when the user exits the second window
+via the back button.
+Implemented a "bundle" object which is used to store data and pass it to the second window via the Intent object.
+Total time: 4h

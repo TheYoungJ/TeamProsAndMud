@@ -1,0 +1,11 @@
+Date:           Oct. 16, 2020
+Name:           Sylvain Yeung
+Student number: 100909961
+
+Setting up dev environment, downloaded and installed Android Studio.
+Configured Android Studio settings and all required dependencies, ie: Java Virtual Machine, Android Phone Emulator
+    -Ran into issues with the emulator as my machine has very little available RAM.
+Familiarized myself with Android Studio dev environment.
+Split up tasks for the application; I will be in charge of working on music streaming
+Followed the "Hello World" tutorial of Android development.
+Total time: 3h

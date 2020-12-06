@@ -1,0 +1,9 @@
+Date:           Oct. 23, 2020
+Name:           Sylvain Yeung
+Student number: 100909961
+
+Created a temporary UI to test out Android "activity" screens.
+Familiarized myself with Android UI elements "views". Created test applications that targeted UI elements and interacted with them.
+Created dynamically change UI elements, with the content pulled from a function within a button.
+Learned about and exterimented with on-click listeners for Button elements.
+Total time: 4h

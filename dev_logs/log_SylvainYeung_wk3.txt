@@ -1,0 +1,13 @@
+Date:           Oct. 9, 2020
+Name:           Sylvain Yeung
+Student number: 100909961
+
+Established our Android app as a media streaming app.
+Worked as a group to plan out potential features: 
+    music streaming: local, Spotify
+    Video Stream local, Amazon Videos, Youtube, Hulu, Netflix, Disney Plus
+    Extra features: Bluetooth, Casting to Google media devices (Google Home, Google ChromeCast, etc...)
+    Searching and Filtering functionality
+Looked at API's supported by popular media streaming companies (Spotify, Netflix)
+Research Android development using Java, but also looked into Kotlin.
+Total Time: 3h
