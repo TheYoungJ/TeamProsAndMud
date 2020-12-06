@@ -49,7 +49,7 @@ public class ImageAdapter extends BaseAdapter implements Filterable {
     public void updateView(ArrayList<ArrayList<String>> update){
         this.temp_items = update;
         System.out.println("UPDATED!!\n");
-        System.out.println("TEMP AFTER UPDATE: "+this.temp_items+"\n");
+        //System.out.println("TEMP AFTER UPDATE: "+this.temp_items+"\n");
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
