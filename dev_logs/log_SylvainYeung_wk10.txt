@@ -1,0 +1,11 @@
+Date:           Nov. 27, 2020
+Name:           Sylvain Yeung
+Student number: 100909961
+
+Continued to work on implementing a Spotify streaming function.
+Was about to obtain a Spotify API key using a premium accoount.
+The Spotify API as only limited functionality, can use to browser and play songs
+associated with the API key's account. Cannot call view catalog of songs from Spotify's database.
+Cannot view complete collection of songs from Spotify.
+
+Total time: 3h

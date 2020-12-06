@@ -1,0 +1,16 @@
+Date:           Nov. 6, 2020
+Name:           Sylvain Yeung
+Student number: 100909961
+
+Worked with and implemented file streaming in the application.
+BUG: App was crashing in the 2nd activity
+    -Resolved: Error was caused due to none declared 2nd activity within the manifest XML file
+Had to edit the manifest file to allow the app to access the devices's storage.
+    -permission change for the app
+Created a function to opened files and accesed them within the application.
+Implemented a list view that is composed of dynamically generated separate elements that will be used as a tile for a "song"
+
+Researched and read through the offical documentation for the Spotify API
+https://developer.spotify.com/documentation/web-api/
+
+Total time: 3h

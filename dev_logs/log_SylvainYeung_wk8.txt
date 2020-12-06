@@ -1,0 +1,14 @@
+Date:           Nov. 13, 2020
+Name:           Sylvain Yeung
+Student number: 100909961
+
+Finish implementing the list view. The "list" elements within the view are generated based on how many music files that
+the application has found within the device. The content of list view are the Song Names - Artist/Band.
+Put together the multiple-activity functionality with the list view to create a dynamically generated interface which will lead
+to the music player.
+Implemented an other activity/window for the music player interface, with a seekbar and buttons which will be used to control the music stream.
+Test a music streaming function, the application can successfully play a song, however the choice of the song is hard coded in. Will implement a way for
+the user to choose a song.
+BUG: the song continues to play even when the user leaves the music player window
+
+Total time: 3h

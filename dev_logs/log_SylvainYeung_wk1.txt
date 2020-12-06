@@ -1,0 +1,9 @@
+Date:           Sept. 25, 2020
+Name:           Sylvain Yeung
+Student number: 100909961
+
+Worked on brainstorming potential ideas for the app.
+Decided to do an android because all team members has windows machine and none of the team members have access to IOS.
+Created a working document with different ideas of apps.
+Research on Android applications and working environments
+Total time spent: 3h

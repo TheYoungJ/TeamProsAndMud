@@ -1,0 +1,14 @@
+Date:           Nov. 20, 2020
+Name:           Sylvain Yeung
+Student number: 100909961
+
+Fixed the bug with the music player, the player was not calling the stop() function when the activity exited
+so the music continued to play. 
+Implemented an on-click listener for the list views containing the song names. This listener function redirects
+the user to a 2nd activity which is the music player.
+The music payer contains a seekbar and buttons to control the playback of the song.
+Linked the seekbar with the music player object, so the position of the cursor controls the 
+time of the song. Usable to seek to specific timepoints within the file.
+Implemented on-click functions for the buttons to play/pause the song and to skip forwards/backwards 5 seconds.
+
+Total time: 4h
