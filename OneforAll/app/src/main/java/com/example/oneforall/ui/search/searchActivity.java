@@ -54,7 +54,7 @@ public class searchActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         gridView = findViewById(R.id.gridView);
-
+        //gridview.set
         gbuilder = new GsonBuilder();
         gson = gbuilder.excludeFieldsWithModifiers(Modifier.STATIC).create();
 
