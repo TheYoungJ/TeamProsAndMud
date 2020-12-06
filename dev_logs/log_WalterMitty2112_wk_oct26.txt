@@ -1,3 +1,5 @@
+all commit addresses for WalterMitty2112 are under the devon branch
+
 Worked on:
 - integrating Utelly api in java with okhttp3 and gradle @ 94b2eaf0ff1e39214c20d562d102482a7b53beb8
 - made small searchbar widget app to test api integration @ 3c76d866fc9cddb4e1a2fd4b9edf23037f824690

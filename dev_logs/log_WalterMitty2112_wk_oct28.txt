@@ -1,3 +1,5 @@
+all commit addresses for WalterMitty2112 are under the devon branch
+
 Worked on:
 - rough working example of api and gridview layout 
 @ 9fdf3d28d11e481f2b1160114031437320ea1146
