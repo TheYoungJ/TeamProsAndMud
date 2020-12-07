@@ -1,0 +1,9 @@
+Date:           Oct. 18 - 24, 2020
+Name:           Mud Mirza
+Student number: 101081388
+
+- Tested various layouts that could be used to display content.
+- Found the Relative Layout to work best.
+- Looked at youtube tutorials related to Relative Layout.
+
+Time spent: 03h

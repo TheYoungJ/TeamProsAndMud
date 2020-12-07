@@ -1,0 +1,10 @@
+Date:           Nov. 22 - 28, 2020
+Name:           Mud Mirza
+Student number: 101081388
+
+- Find images for netflix top 10
+- Implement netflix top 10
+- Resize images to keep them consistent
+- Only modify home screen to make it easier to merge with search and library
+
+Time spent: 02h30m

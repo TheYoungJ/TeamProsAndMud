@@ -1,0 +1,9 @@
+Date:           Sept. 27 - Oct. 3, 2020
+Name:           Mud Mirza
+Student number: 101081388
+
+- Installed Android Studio and saw the nav bar option.
+- Watched youtube videos on the nav bar to understand it further.
+- Looked at apps that implemented the navbar.
+
+Time spent: 02h

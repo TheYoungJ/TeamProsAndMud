@@ -1,0 +1,8 @@
+Date:           Oct. 4 - 10, 2020
+Name:           Mud Mirza
+Student number: 101081388
+
+- Watched youtube tutorials about fragments used with the nav bar.
+- Looked at tutorials for android studio to understand how to use the tools procided.
+
+Time spent: 02h30m

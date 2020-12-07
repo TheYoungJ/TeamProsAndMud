@@ -1,0 +1,10 @@
+Date:           Oct. 25 - 31, 2020
+Name:           Mud Mirza
+Student number: 101081388
+
+- Implemented the fragments for the home, search, and library.
+- Added Relative Layout to the home screen
+- Looked at categories and layouts to display movies and tv shows.
+
+
+Time spent: 02h

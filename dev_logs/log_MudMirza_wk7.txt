@@ -1,0 +1,9 @@
+Date:           Nov. 1 - 7, 2020
+Name:           Mud Mirza
+Student number: 101081388
+
+- Lost internet connection for approximately 6 days of the week.
+- Could not access documentation or look at resources due to the lack of internet.
+- Came to a conclusion that the Scroll View with a horizontal Linear Layout worked best.
+
+Time spent: 00h10m

@@ -1,0 +1,12 @@
+Date:           Nov. 8 - 14, 2020
+Name:           Mud Mirza
+Student number: 101081388
+
+- Added default colours to the app.
+- 3 Scroll Views that contained a horizontal linear layout for all the categories of content to show on the home screen
+- Hardcoded several images as a placeholder until I learn the API
+- Added corressponding text to each category
+- Added a gradient background
+- Added a search bar to the search fragment
+
+Time spent: 08h30m

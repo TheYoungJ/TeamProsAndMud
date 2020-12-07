@@ -1,0 +1,10 @@
+Date:           Oct. 11 - 17, 2020
+Name:           Mud Mirza
+Student number: 101081388
+
+- Started a project with a nav bar.
+- Added the function to use my phone for live testing.
+- Began to think about the layout I wanted to use for the home screen.
+
+
+Time spent: 03h

@@ -1,0 +1,9 @@
+Date:           Nov. 15 - 21, 2020
+Name:           Mud Mirza
+Student number: 101081388
+
+- Added netflix top 10 and removed placeholder images from home screen.
+- Image buttons are clickable and open the respective app once tapped.
+- Change the spacing and some parts of the UI slightly
+
+Time spent: 03h

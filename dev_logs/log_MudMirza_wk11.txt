@@ -1,0 +1,8 @@
+Date:           Nov. 29 - Dec. 5, 2020
+Name:           Mud Mirza
+Student number: 101081388
+
+- Do final touch ups on the UI
+- Make sure the home page is functioning as it should
+
+Time spent: 00h30m
