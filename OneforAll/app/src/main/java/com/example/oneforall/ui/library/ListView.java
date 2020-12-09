@@ -1,6 +1,7 @@
 package com.example.oneforall.ui.library;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
@@ -26,6 +27,7 @@ public class ListView extends AppCompatActivity {
     private String songTitles[];
     private ArrayList<File> songs;
 
+    @RequiresApi(api = Build.VERSION_CODES.R)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,29 +41,25 @@ public class ListView extends AppCompatActivity {
 //        File path = new File("/sdcard/Download/Linkin Park - Greatest Hits [2013]");
 //        ArrayList<File> songs = readSongs(path);
 
-        //if (songs == null){
-            //checkPermission();
-       // }else {
         songs = readSongs(Environment.getExternalStorageDirectory());
 
-            songTitles = new String[songs.size()];
+        songTitles = new String[songs.size()];
 
-            for (int i = 0; i < songs.size(); ++i) {
-                songTitles[i] = songs.get(i).getName().replace(".mp3", "");
+        for (int i = 0; i < songs.size(); ++i) {
+            songTitles[i] = songs.get(i).getName().replace(".mp3", "");
+        }
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.song_layout, R.id.txtSongName, songTitles);
+
+        listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(ListView.this, MusicActivity.class).putExtra("position", position).putExtra("list", songs);
+                startActivity(intent);
             }
-
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.song_layout, R.id.txtSongName, songTitles);
-
-            listView.setAdapter(adapter);
-
-            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Intent intent = new Intent(ListView.this, MusicActivity.class).putExtra("position", position).putExtra("list", songs);
-                    startActivity(intent);
-                }
-            });
-        //}
+        });
     }
 
     public void checkPermission() {
