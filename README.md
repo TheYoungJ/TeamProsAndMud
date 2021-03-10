@@ -1,5 +1,9 @@
 # TeamProsAndMud
 
+##SEARCH FUNCTIONALITY NO LONGER OPERATIONAL
+
+In order to continue to use it, you must subscribe to the RapidAPI used in the project and provide your own keys.
+
 ## One for All
 
 ![](https://github.com/TheYoungJ/TeamProsAndMud/blob/master/images/logo/one_for_all.png)
